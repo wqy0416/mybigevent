@@ -16,6 +16,7 @@ $(function () {
         });
     })
 })
+
 function getUserInfo() {
     $.ajax({
         type: 'GET',

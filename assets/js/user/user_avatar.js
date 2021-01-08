@@ -21,15 +21,19 @@ $(function () {
 
     //为文件选择框绑定change事件
     $('#file').on('change', function (e) {
-        //获取用户选择的文件
+        //获取用户选择的文件,返回值是一个对象 {0: File, length: 1}
         var filelist = e.target.files;
+        // console.log(filelist);
         if (filelist.length == 0) {
             return layer.msg('请选择照片!');
         }
 
-        // 1. 拿到用户选择的文件
-        var file = e.target.files[0]
-        // 2. 将文件，转化为路径
+        // 1. 拿到用户选择的文件,返回值是一个对象
+        //{name: "pic.jpg", lastModified: 1574864177020, lastModifiedDate: Wed Nov 27 2019 22:16:17 GMT+0800 (中国标准时间), webkitRelativePath: "", size: 42900, …}
+        var file = filelist[0];
+        // console.log(file);
+
+        // 2. URL功能就是将文件转化为路径
         var imgURL = URL.createObjectURL(file)
         // 3. 重新初始化裁剪区域
         $image
